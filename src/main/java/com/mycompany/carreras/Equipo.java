@@ -4,6 +4,9 @@ package com.mycompany.carreras;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.io.PrintStream;
+import org.fusesource.jansi.Ansi;
+import org.fusesource.jansi.AnsiConsole;
 
 /**
  *Clase que contiene una parte de la lógica de impresión de los equipos corredores
@@ -54,22 +57,42 @@ public class Equipo extends Thread{
      */
     public void avanzar(){
         try { 
-            System.out.println("Avanzando " + nombre + " Corredor: "+corredores.getNombre());
+            //System.out.println("Avanzando " + nombre + " Corredor: "+corredores.getNombre());
             int pos = inicio;
+            String mostrar="";
             while (pos <= fin) {
+                if (pos == 1) {
+                    mostrar += "\033[34m|(*-*)|";
+                    //System.out.print("\033[34m|(*-*)|");                    
+                } else if(pos == 41){                    
+                    mostrar += "\033[34m|(°O°)|";
+                    //System.out.print("_\033[30m");
+                }else if(pos == 81){     
+                    mostrar += "\033[34m|('-')|";          
+                }else{                    
+                    mostrar =  "_____\033[30m"+ mostrar;     
+                }
+                if (nombre.equals("Equipo Rojo")) {
+                    System.out.println(nombre + "  " + mostrar);
+                }else if(nombre.equals("Equipo Azul")) {
+                    System.out.println(nombre + " " + mostrar);
+                }else if(nombre.equals("Equipo Amarillo")) {
+                    System.out.println(nombre + " " + mostrar);
+                }
                 pos += (int)(Math.random()*5+1);  
-                System.out.println(" Corredor: "+corredores.getNombre()+" Avanzando: " + pos);
+                //System.out.println(" Corredor: "+corredores.getNombre()+" Avanzando: " + pos);
                 corredores.setPosicion(pos);
-                Thread.sleep(200);          
+                Thread.sleep(800);          
             }
             if((corredores.getNombre().equals("Rojo_3")) || (corredores.getNombre().equals("Azul_3")) || (corredores.getNombre().equals("Amarillo_3"))){
                 corredores.setBandera(false);                
                 Thread.sleep(2000); 
             }      
-            System.out.println(nombre + " Termino: " +corredores.getNombre()); 
+            //System.out.println(nombre + " Termino: " +corredores.getNombre()); 
             if (!corredores.isBandera()) {
                 System.out.println("Ganador "+nombre);                
-                System.out.println("Carrera finalizada");                  
+                System.out.println("Carrera finalizada"); 
+                System.exit(0);
             } 
            } catch (InterruptedException ex) {
                     System.out.println("Se disparon un interrup");

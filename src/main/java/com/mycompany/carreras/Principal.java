@@ -16,10 +16,8 @@ public class Principal {
 /**
  * Constructor por defecto
  */
-    public Principal() {
-       
-        iniciar();
-       
+    public Principal() {       
+        iniciar();       
     }
     /**
      * Método que contiene la asignación, guardado en listas e inicio de los hilos
