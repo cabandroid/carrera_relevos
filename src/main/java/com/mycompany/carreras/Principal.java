@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.carreras;
 
 import java.util.List;
@@ -11,16 +7,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author sbego
+ * Clase que Principal controladora, donde se asignan los datos, se realiza un poco de lógica
+ * @author Jhojan Cortes
+ * @author David Caballero
+ * @version 1.0.0
  */
 public class Principal {
-
+/**
+ * Constructor por defecto
+ */
     public Principal() {
        
         iniciar();
        
     }
+    /**
+     * Método que contiene la asignación, guardado en listas e inicio de los hilos
+     */
     public void iniciar(){
         Corredor rojo1 = new Corredor("Rojo_1");
         Corredor rojo2 = new Corredor("Rojo_2");
@@ -97,7 +100,10 @@ public class Principal {
     }
     
     
-    
+    /**
+     * Metodo principal para ejecutar lo del constructor
+     * @param args 
+     */
     public static void main(String[] args) {        
         new Principal();
         

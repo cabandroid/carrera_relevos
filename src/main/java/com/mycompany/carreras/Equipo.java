@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.carreras;
 
 import java.util.List;
@@ -10,31 +6,55 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author tibio
+ *Clase que contiene una parte de la lógica de impresión de los equipos corredores
+ * También hereda de Thread
+ * @author Jhojan Cortes
+ * @author David Caballero
+ * @version 1.0.0
  */
 public class Equipo extends Thread{
-    
+    /**
+     * Objeto tipo Corredor que contiene diversos métodos
+     */
     Corredor corredores;
+    /**
+     * Variable miembro que indica el nombre del equipo
+     */
     String nombre;
+    /**
+     * Variable miembro que determina el inicio de la posición
+     */
     int inicio;
+    /**
+     * Variable miembro que determina el fin de la posición
+     */
     int fin;
-    
+    /**
+     * Constructor sobrecargado que contiene los atributos
+     * @param nombre
+     * @param corredores
+     * @param inicio
+     * @param fin 
+     */
     public Equipo(String nombre,Corredor corredores, int inicio, int fin) {
         this.corredores = corredores;
         this.nombre = nombre;
         this.inicio = inicio;
         this.fin = fin;
     }
-
+    /**
+     * Método mejorado para ejecutar la lógica
+     */
     @Override
     public void run() {
         avanzar();
     }       
-    
+    /**
+     * Método que permite determinar la lógica de cada corredor de distinto equipo
+     */
     public void avanzar(){
         try { 
-            System.out.println("Avanzndo " + nombre + " Corredor: "+corredores.getNombre());
+            System.out.println("Avanzando " + nombre + " Corredor: "+corredores.getNombre());
             int pos = inicio;
             while (pos <= fin) {
                 pos += (int)(Math.random()*5+1);  
